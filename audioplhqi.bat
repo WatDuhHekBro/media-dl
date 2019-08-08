@@ -1,0 +1,1 @@
+youtube-dl -x --audio-format mp3 -o "%%(playlist_index)s - %%(title)s.%%(ext)s" --audio-quality 0 %1=%2

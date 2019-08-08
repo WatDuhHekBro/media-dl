@@ -1,0 +1,25 @@
+### -x = --extract-audio
+
+[YouTube MP4]
+youtube-dl <URL> -f bestvideo+bestaudio/best
+
+[YouTube MP3]
+youtube-dl -x --audio-format mp3 <URL>
+
+[YouTube MP3 (Highest Quality)]
+youtube-dl -x --audio-format mp3 --audio-quality 0 <URL>
+
+[YouTube MP3 (Playlist)]
+youtube-dl -x --audio-format mp3 -o "%(title)s.%(ext)s" <URL>
+
+[YouTube MP3 (Playlist, Highest Quality)]
+youtube-dl -x --audio-format mp3 -o "%(title)s.%(ext)s" --audio-quality 0 <URL>
+
+[YouTube Subtitles (English)]
+youtube-dl --write-sub --sub-lang en --skip-download <URL>
+
+[YouTube Subtitles (All)]
+youtube-dl --all-subs --skip-download <URL>
+
+[Bilibili FLV]
+annie <Bilibili>
