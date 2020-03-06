@@ -1,0 +1,3 @@
+youtube-dl --write-description --write-all-thumbnails --embed-thumbnail --all-subs https://www.youtube.com/watch?v=YO-x7j5RyGc -f bestvideo+bestaudio/best
+youtube-dl -o "%(title)s.%(ext)s" https://www.youtube.com/watch?v=YO-x7j5RyGc
+youtube-dl -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" --write-description --skip-download https://www.youtube.com/playlist?list=PL77D98F68F6DBB35D
