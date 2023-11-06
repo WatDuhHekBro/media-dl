@@ -1,8 +1,10 @@
+# TODO: "https://piped.zbound.net/watch?v=Z9MP-Wh_Ipss" doesn't transform?
+
 import os
 import re
 
 # Match /watch?v= URLs and allow using links from alternate YouTube frontends directly
-ytvideo_pattern = re.compile(r'https:\/\/.+?(\/watch\?v=.{11})')
+ytvideo_pattern = re.compile(r'https:\/\/.+?\/watch\?(?:\w+=.+?&)*(v=.{11})')
 # Do the same for YouTube playlists
 playlist_pattern = re.compile(r'https:\/\/.+?(\/playlist\?list=.+)')
 
@@ -52,15 +54,17 @@ else:
 		match = re.fullmatch(ytvideo_pattern, u)
 
 		if(match):
-			u = 'https://www.youtube.com' + match.groups()[0]
+			u = 'https://www.youtube.com/watch?' + match.groups()[0]
 
 		match = re.fullmatch(playlist_pattern, u)
 
 		# Detect if it's a playlist URL and handle accordingly, ignore existing output location
 		if(match):
-			u = 'https://www.youtube.com' + match.groups()[0]
+			u = 'https://www.youtube.com/watch?' + match.groups()[0]
+			print('Using URL: {}'.format(u))
 			os.system('youtube-dl {} {} {}'.format(' '.join(args), '-o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"', u))
 		else:
+			print('Using URL: {}'.format(u))
 			os.system('youtube-dl {} {} {}'.format(' '.join(args), output, u))
 		print()
 
