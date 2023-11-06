@@ -1,5 +1,3 @@
-# TODO: "https://piped.zbound.net/watch?v=Z9MP-Wh_Ipss" doesn't transform?
-
 import os
 import re
 
