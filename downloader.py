@@ -45,7 +45,7 @@ else:
 	# Ask for output location
 	d = input("Custom directory? (Default: \"general\") ")
 	d = d if d else 'general'
-	output = '-o "{}/%(title)s.%(ext)s"'.format(d)
+	output = '-o "{}/%(title)s [id=%(id)s].%(ext)s"'.format(d)
 	print()
 
 	for u in url:
@@ -61,7 +61,7 @@ else:
 
 		# Detect if it's a playlist URL and handle accordingly, ignore existing output location
 		if(match):
-			u = 'https://www.youtube.com/watch?' + match.groups()[0]
+			u = 'https://www.youtube.com' + match.groups()[0]
 			print('Using Playlist URL: {}'.format(u))
 			os.system('youtube-dl {} {} {}'.format(' '.join(args), '-o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"', u))
 		else:
