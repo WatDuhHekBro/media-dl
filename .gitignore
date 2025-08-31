@@ -1,0 +1,6 @@
+# Ignore everything by default
+*
+
+# Except for project files
+!*.py
+!.gitignore
