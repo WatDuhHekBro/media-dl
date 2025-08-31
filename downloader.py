@@ -17,7 +17,10 @@ flags = {
 	'subs': '--all-subs',
 	'desc': '--write-description',
 	'thumb': '--write-all-thumbnails',
-	'thumb-embed': '--embed-thumbnail'
+	'thumb-embed': '--embed-thumbnail',
+	'cookies': '--cookies cookies.txt',
+	'sponsor': '--sponsorblock-remove sponsor',
+	'custom': ''
 }
 
 url = input("Input URLs (space-separated): ")
@@ -40,7 +43,11 @@ else:
 
 	for x in f:
 		if x in flags:
-			args.append(flags[x])
+			if x == "custom":
+
+				args.append(input("Custom Arguments: "))
+			else:
+				args.append(flags[x])
 
 	# Ask for output location
 	d = input("Custom directory? (Default: \"general\") ")
@@ -63,7 +70,7 @@ else:
 		if(match):
 			u = 'https://www.youtube.com' + match.groups()[0]
 			print('Using Playlist URL: {}'.format(u))
-			os.system('youtube-dl {} {} {}'.format(' '.join(args), '-o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"', u))
+			os.system('youtube-dl {} {} {}'.format(' '.join(args), '-o "%(playlist)s/%(playlist_index)s - %(title)s [id=%(id)s].%(ext)s"', u))
 		else:
 			print('Using Video URL: {}'.format(u))
 			os.system('youtube-dl {} {} {}'.format(' '.join(args), output, u))
